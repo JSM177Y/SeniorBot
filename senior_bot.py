@@ -14,6 +14,7 @@ DISCORD_CHANNEL_ID = int(os.getenv('DISCORD_CHANNEL_ID'))
 
 # Set up the Discord bot
 intents = discord.Intents.default()
+intents.message_content = True  # Enable message content intent
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 # Dictionary to store the latest commit SHA for each branch
@@ -76,6 +77,7 @@ async def check_for_updates():
             channel = bot.get_channel(DISCORD_CHANNEL_ID)
             if channel:
                 message = f"New commit in {GITHUB_REPO} on branch {branch_name} by {author}:\n\n{commit_message}\n{commit_url}"
+                print(f"Sending message to channel {channel.id}: {message}")  # Debug print
                 await channel.send(message)
             else:
                 print(f'Could not find channel with ID {DISCORD_CHANNEL_ID}')
