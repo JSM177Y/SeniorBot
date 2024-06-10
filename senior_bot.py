@@ -81,6 +81,8 @@ async def check_for_updates():
                 await channel.send(message)
             else:
                 print(f'Could not find channel with ID {DISCORD_CHANNEL_ID}')
+        else:
+            print(f"No new commit detected on branch {branch_name}")
 
 # Run the bot
 bot.run(DISCORD_BOT_TOKEN)
