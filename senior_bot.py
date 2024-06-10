@@ -21,7 +21,7 @@ app = Flask(__name__)
 
 # Set up Discord bot
 intents = discord.Intents.default()
-intents.message_content = True
+intents.message_content = True  # Enable this only if necessary
 bot = commands.Bot(command_prefix='!', intents=intents)
 
 # Route to handle GitHub webhook
